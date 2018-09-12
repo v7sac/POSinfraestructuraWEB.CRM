@@ -2,7 +2,7 @@
 #                                                                            
 #  https://www.odoo.com/apps/modules/9.0/posinfrawebcrm                      
 #                                                                            
-# 'author': "SCL-SOFTWEB365",                                                
+# 'author': "SCL-FOTOCOPIADORAS",                                                
 # 'published': https://www.odoo.com/apps/modules/9.0/posinfrawebcrm/         
 # 'name': "POSinfraestructuraWEB.CRM",                                       
 #                                                                            
@@ -16,7 +16,7 @@
 #        This module modifies POS WEB integration and CRM to satisfy especifics rules of bussiness.
 #        Este modulo modifica la integración POS WEB y CRM deacuerdo a reglas de negocio particulares.
 #   """,                                                                     
-#    Copyright (C) 2017  SCL-SOFTWEB365  (http://www.softweb365.com)
+#    Copyright (C) 2017  SCL-FOTOCOPIADORAS  (http://www.softweb365.com)
 #    All Rights Reserved.
 #
 #    This program is free software: you can redistribute it and/or modify
