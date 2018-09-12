@@ -11,7 +11,7 @@
     """,
 
     'author': "SCL-SOFTWEB365",
-    'website': "http://www.yourcompany.com",
+    'website': "http://www.softweb365.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
