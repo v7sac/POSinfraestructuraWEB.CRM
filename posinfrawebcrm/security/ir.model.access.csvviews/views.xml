@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+    <record model="ir.module.category" id="module_categoria_infrasan">
+        <field name="name">Manejo acceso infraesoft</field>
+        <field name="sequence">10</field>
+    </record>        
+    <record id="grupo_infrasan_usuario" model="res.groups">
+        <field name="name">Operardor</field> 
+        <field name="category_id" ref="module_categoria_infrasan"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>    
+    <record id="grupo_infrasan_administrador" model="res.groups">
+        <field name="name">Responsable</field>
+        <field name="category_id" ref="module_categoria_infrasan"/>
+        <field name="implied_ids" eval="[(4, ref('grupo_infrasan_usuario'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+</data>
+</openerp>

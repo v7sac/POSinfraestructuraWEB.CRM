@@ -1,0 +1,757 @@
+<openerp>
+  <data>    
+    <record id="action_infrasan_areas" model="ir.actions.act_window">
+      <field name="name">Areas</field>
+      <field name="res_model">infrasan.areas</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>       
+     <record id="busqueda_infrasan_areas" model="ir.ui.view">
+      <field name="name">Busqueda area</field>
+      <field name="model">infrasan.areas</field>      
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>                
+        <field name="nombre"/>        
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_areas" model="ir.ui.view">
+      <field name="name">Listado de areas</field>
+      <field name="model">infrasan.areas</field>
+      <field name="arch" type="xml">
+       <tree string="Areas">                
+        <field name="nombre"/>
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_areas" model="ir.ui.view">
+      <field name="name">Formulario area</field>
+      <field name="model">infrasan.areas</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                    
+          <label for="nombre"/>
+          <field name="nombre"/>         
+          <label for="ids_nodos"/>
+          <field name="ids_nodos" readonly="1">
+            <tree string="Nodos" >
+              <field name="nombre"/>              
+            </tree>
+          </field>
+          <label for="ids_funcionarios"/>
+          <field name="ids_funcionarios" readonly="1">
+            <tree string="Funcionarios" >
+              <field name="name"/>              
+            </tree>
+          </field>                              
+        </sheet>
+           <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+       </form>
+      </field>
+    </record>    
+
+<record model="ir.actions.act_window" id="action_partner_funcionarios">
+            <field name="name">Contactos</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+</record>
+<record model="ir.ui.view" id="formulario_partner_funcionario">
+            <field name="name">partner.funcionario</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>            
+            <field name="arch" type="xml">
+               <notebook position="inside">
+                 <page string="Relaciones">
+                      <group>                
+                         <field name="id_area"/>                
+                      </group>
+                </page>
+              </notebook>            
+        </field>
+  </record>
+        
+  <record model="ir.ui.view" id="listado_partner_funcionario">
+            <field name="name">listado.funcionario</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml"> 
+             <xpath expr="//field[@name='display_name']" position="before">
+               <field name="id_area"/>
+             </xpath> 
+          </field>
+  </record>
+
+<!--record id="action_infrasan_funcionarios" model="ir.actions.act_window">
+      <field name="name">Funcionarios</field>
+      <field name="res_model">infrasan.funcionarios</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>       
+     <record id="busqueda_infrasan_funcionarios" model="ir.ui.view">
+      <field name="name">Busqueda funcionarios</field>
+      <field name="model">infrasan.funcionarios</field>      
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>                
+        <field name="id_area"/>    
+        <field name="identificacion"/>
+        <field name="nombre"/>        
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_funcionarios" model="ir.ui.view">
+      <field name="name">Listado de funcionarios</field>
+      <field name="model">infrasan.funcionarios</field>
+      <field name="arch" type="xml">
+       <tree string="Funcionarios">         
+        <field name="id_area"/>       
+        <field name="identificacion"/>       
+        <field name="nombre"/>
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_funcionarios" model="ir.ui.view">
+      <field name="name">Formulario funcionarios</field>
+      <field name="model">infrasan.funcionarios</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                    
+          <label for="id_area"/>
+          <field name="id_area"/>         
+          <label for="nombre"/>
+          <field name="nombre"/>     
+          <label for="identificacion"/>
+          <field name="identificacion"/>    
+          <label for="ids_usuarios"/>
+          <field name="ids_usuarios" readonly="1">
+            <tree string="Usuarios" >
+              <field name="nombre"/>              
+            </tree>
+          </field>                              
+        </sheet>
+          <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+       </form>
+      </field>
+    </record-->
+
+    <record id="action_infrasan_usuarios" model="ir.actions.act_window">
+      <field name="name">Usuarios</field>
+      <field name="res_model">infrasan.usuarios</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>       
+     <record id="busqueda_infrasan_usuarios" model="ir.ui.view">
+      <field name="name">Busqueda usuarios</field>
+      <field name="model">infrasan.usuarios</field>
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>
+        <field name="id_funcionario"/>               
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_usuarios" model="ir.ui.view">
+      <field name="name">Listado de usuarios</field>
+      <field name="model">infrasan.usuarios</field>
+      <field name="arch" type="xml">
+       <tree string="Usuarios"> 
+        <field name="id_funcionario"/>               
+        <field name="id_nodo"/>        
+        <field name="id_servicio"/>
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_usuarios" model="ir.ui.view">
+      <field name="name">Formulario usuarios</field>
+      <field name="model">infrasan.usuarios</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                 
+           <label for="id_funcionario"/>
+           <field name="id_funcionario"/>
+           <label for="id_nodo"/>
+           <field name="id_nodo"/>        
+           <label for="id_servicio"/>
+           <field name="id_servicio"/>
+        </sheet>
+          <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+       </form>
+      </field>
+    </record>
+ 
+   
+    <record id="action_infrasan_nodos" model="ir.actions.act_window">
+      <field name="name">Nodos</field>
+      <field name="res_model">infrasan.nodos</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>      
+
+     <record id="busqueda_infrasan_nodos" model="ir.ui.view">
+      <field name="name">Busqueda nodos</field>
+      <field name="model">infrasan.nodos</field>      
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>                
+        <field name="tipo"/>
+        <field name="nombre"/>            
+        <field name="ciudad"/>
+        <field name="ccm"/>
+        <field name="piso"/> 
+        <field name="fila"/>
+        <field name="posicionu"/>
+        <field name="etiqueta_rack"/>
+        <field name="etiqueta_equipo"/>
+        <field name="equipo"/>
+        <field name="marca"/>
+        <field name="modelo"/>
+        <field name="generacion"/>
+        <field name="serial"/>
+        <field name="procesador"/>
+        <field name="memoria_ram"/>
+        <field name="bahias_discos_en_uso"/>
+        <field name="bahias_discos_vacios"/>
+        <field name="descripcipon_de_discos"/>
+        <field name="fecha_instalacion_en_sitio"/>
+        <field name="fecha_ultimo_mantenimiento"/>
+        <field name="expiracion_vida_util_de_equipo"/>
+        <field name="proveedor"/>
+        <field name="propietario"/>
+        <field name="aplicacion"/>        
+        <field name="sistema_operativo"/>
+        <field name="licencia_so"/>
+        <field name="version_so"/>
+        <field name="fecha_instalacion"/>
+        <field name="gestion_a_realizar"/>
+        <field name="id_contrato_soporte"/>
+        <field name="fecha_inicio_soporte"/>
+        <field name="fecha_fin_soporte"/>
+        <field name="contacto_soporte"/>
+        <field name="datos_soporte"/>
+        <field name="comentarios"/>
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_nodos" model="ir.ui.view">
+      <field name="name">Listado de nodos</field>
+      <field name="model">infrasan.nodos</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+       <tree string="Hosts">   
+        <field name="id_area" string="Area"/>                     
+        <field name="tipo"/>
+        <field name="nombre" />
+        <field name="ids_usuarios"/>
+        <field name="ids_ips"/>
+        <field name="ids_ubicacionesvirtuales"/>
+        <field name="ids_servicios"/> 
+        <field name="ciudad"/>
+        <field name="ccm"/>
+        <field name="piso"/> 
+        <field name="fila"/>
+        <field name="posicionu"/>
+        <field name="etiqueta_rack"/>
+        <field name="etiqueta_equipo"/>
+        <field name="equipo"/>
+        <field name="marca"/>
+        <field name="modelo"/>
+        <field name="generacion"/>
+        <field name="serial"/>
+        <field name="procesador"/>
+        <field name="memoria_ram"/>
+        <field name="bahias_discos_en_uso"/>
+        <field name="bahias_discos_vacios"/>
+        <field name="descripcipon_de_discos"/>
+        <field name="fecha_instalacion_en_sitio"/>
+        <field name="fecha_ultimo_mantenimiento"/>
+        <field name="expiracion_vida_util_de_equipo"/>
+        <field name="proveedor"/>
+        <field name="propietario"/>
+        <field name="aplicacion"/>
+        <field name="tipo"/>
+        <field name="sistema_operativo"/>
+        <field name="licencia_so"/>
+        <field name="version_so"/>
+        <field name="fecha_instalacion"/>
+        <field name="gestion_a_realizar"/>
+        <field name="id_contrato_soporte"/>
+        <field name="fecha_inicio_soporte"/>
+        <field name="fecha_fin_soporte"/>
+        <field name="contacto_soporte"/>
+        <field name="datos_soporte"/>
+        <field name="comentarios"/>
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_nodos" model="ir.ui.view">
+      <field name="name">Formulario host</field>
+      <field name="model">infrasan.nodos</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                    
+          <label for="id_area"/>
+          <field name="id_area"/>
+          <label for="tipo"/>
+          <field name="tipo"/>
+          <label for="nombre"/>
+          <field name="nombre"/>          
+          <field name="ids_servicios">
+            <tree>
+              <field name="nombre"/>              
+            </tree>
+            <form string="ids_servicios">
+              <label for="nombre"/>
+              <field name="nombre"/>
+            </form>
+          </field>
+          <field name="ids_usuarios" readonly="1">
+            <tree string="Usuarios" >
+              <field name="id_funcionario"/>
+            </tree>
+          </field>  
+          <field name="ids_ips" readonly="1">
+            <tree string="IPs" >
+              <field name="numero"/>              
+            </tree>
+          </field>
+          <field name="ids_ubicacionesvirtuales" >
+            <tree string="ubicacionesvirtuales" >
+              <field name="path"/>              
+            </tree>
+          </field>           
+           <label for="ciudad"/>
+           <field name="ciudad"/>
+           <label for="ccm"/>
+           <field name="ccm"/>
+           <label for="piso"/>
+           <field name="piso"/> 
+           <label for="fila"/>
+           <field name="fila"/>
+           <label for="posicionu"/>
+           <field name="posicionu"/>
+           <label for="etiqueta_rack"/>
+           <field name="etiqueta_rack"/>
+           <label for="etiqueta_equipo"/>
+           <field name="etiqueta_equipo"/>
+           <label for="equipo"/>
+           <field name="equipo"/>
+           <label for="marca"/>
+           <field name="marca"/>
+           <label for="modelo"/>
+           <field name="modelo"/>
+           <label for="generacion"/>
+           <field name="generacion"/>
+           <label for="serial"/>
+           <field name="serial"/>
+           <label for="procesador"/>
+           <field name="procesador"/>
+           <label for="memoria_ram"/>
+           <field name="memoria_ram"/>
+           <label for="bahias_discos_en_uso"/>
+           <field name="bahias_discos_en_uso"/>
+           <label for="bahias_discos_vacios"/>
+           <field name="bahias_discos_vacios"/>
+           <label for="descripcipon_de_discos"/>
+           <field name="descripcipon_de_discos"/>
+           <label for="fecha_instalacion_en_sitio"/>
+           <field name="fecha_instalacion_en_sitio"/>
+           <label for="fecha_ultimo_mantenimiento"/>
+           <field name="fecha_ultimo_mantenimiento"/>
+           <label for="expiracion_vida_util_de_equipo"/>
+           <field name="expiracion_vida_util_de_equipo"/>
+           <label for="proveedor"/>
+           <field name="proveedor"/>
+           <label for="propietario"/>
+           <field name="propietario"/>
+           <label for="aplicacion"/>
+           <field name="aplicacion"/>           
+           <label for="sistema_operativo"/>
+           <field name="sistema_operativo"/>
+           <label for="licencia_so"/>
+           <field name="licencia_so"/>
+           <label for="version_so"/>
+           <field name="version_so"/>
+           <label for="fecha_instalacion"/>
+           <field name="fecha_instalacion"/>
+           <label for="gestion_a_realizar"/>
+           <field name="gestion_a_realizar"/>
+           <label for="id_contrato_soporte"/>
+           <field name="id_contrato_soporte"/>
+           <label for="fecha_inicio_soporte"/>
+           <field name="fecha_inicio_soporte"/>
+           <label for="fecha_fin_soporte"/>
+           <field name="fecha_fin_soporte"/>
+           <label for="contacto_soporte"/>
+           <field name="contacto_soporte"/>
+           <label for="datos_soporte"/>
+           <field name="datos_soporte"/>
+           <label for="comentarios"/>
+           <field name="comentarios"/>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+       </form>
+      </field>
+    </record>
+
+    <record id="action_infrasan_servicios" model="ir.actions.act_window">
+      <field name="name">Servicios</field>
+      <field name="res_model">infrasan.servicios</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>       
+     <record id="busqueda_infrasan_servicios" model="ir.ui.view">
+      <field name="name">Busqueda servicios</field>
+      <field name="model">infrasan.servicios</field>      
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>                
+        <field name="nombre"/>
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_servicios" model="ir.ui.view">
+      <field name="name">Listado de servicios</field>
+      <field name="model">infrasan.servicios</field>    
+      <field name="arch" type="xml">
+       <tree string="Detalle del servicio">                   
+        <field name="ids_nodos"/>
+        <field name="ids_usuarios"/>
+        <field name="nombre"/>    
+        <field name="ids_ubicacionesvirtuales"/>  
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_servicios" model="ir.ui.view">
+      <field name="name">Formulario servidor de aplicaciones</field>
+      <field name="model">infrasan.servicios</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                                 
+          <label for="nombre"/>
+          <field name="nombre"/>             
+          <field name="ids_nodos">
+            <tree>                   
+              <field name="id_area"/>        
+              <field name="nombre"/>               
+              <field name="tipo"/>   
+              <field name="ids_usuarios"/>  
+              <field name="ids_ips"/>  
+              <field name="ids_ubicacionesvirtuales"/>                
+              <field name="ciudad"/>
+              <field name="ccm"/>           
+              <field name="piso"/>            
+              <field name="fila"/>           
+              <field name="posicionu"/>
+              <field name="etiqueta_rack"/>
+              <field name="etiqueta_equipo"/>     
+            </tree>
+             <form string="ids_nodos">
+              <label for="nombre"/>
+              <field name="nombre"/>  
+              <label for="tipo"/>             
+              <field name="tipo"/>
+            </form>
+          </field>
+          <field name="ids_usuarios" >
+            <tree string="Usuarios" >
+              <field name="id_funcionario"/>              
+            </tree>
+          </field>
+          <field name="ids_ubicacionesvirtuales" >
+            <tree string="ubicacionesvirtuales" >
+              <field name="path"/>              
+            </tree>
+          </field>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+       </form>
+      </field>
+    </record>
+
+<record id="action_infrasan_redes" model="ir.actions.act_window">
+      <field name="name">Redes</field>
+      <field name="res_model">infrasan.redes</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>       
+     <record id="busqueda_infrasan_redes" model="ir.ui.view">
+      <field name="name">Busqueda redes</field>
+      <field name="model">infrasan.redes</field>      
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>                
+        <field name="nombre"/>        
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_redes" model="ir.ui.view">
+      <field name="name">Listado de redes</field>
+      <field name="model">infrasan.redes</field>
+      <field name="arch" type="xml">
+       <tree string="Areas">                
+        <field name="nombre"/>
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_redes" model="ir.ui.view">
+      <field name="name">Formulario redes</field>
+      <field name="model">infrasan.redes</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                    
+          <label for="nombre"/>
+          <field name="nombre"/>         
+          <label for="ids_ips"/>
+          <field name="ids_ips" readonly="1">
+            <tree string="IPs" >
+              <field name="nombre_dispositivo"/>
+              <field name="numero"/>
+              <field name="mascara"/>
+            </tree>
+          </field>      
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+       </form>
+      </field>
+    </record> 
+
+    <record id="action_infrasan_ips" model="ir.actions.act_window">
+      <field name="name">IPs</field>
+      <field name="res_model">infrasan.ips</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>       
+     <record id="busqueda_infrasan_ips" model="ir.ui.view">
+      <field name="name">Busqueda IPS</field>
+      <field name="model">infrasan.ips</field>      
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>                
+        <field name="nombre_dispositivo" />
+        <field name="numero"/> 
+        <field name="mascara"/>
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_ips" model="ir.ui.view">
+      <field name="name">Listado de IPs</field>
+      <field name="model">infrasan.ips</field>
+      <field name="arch" type="xml">
+       <tree string="IPs">                
+        <field name="nombre_dispositivo" />
+        <field name="numero"/> 
+        <field name="mascara"/>
+        <field name="id_red"/>
+        <field name="id_nodo"/>
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_ips" model="ir.ui.view">
+      <field name="name">Formulario IPs</field>
+      <field name="model">infrasan.ips</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                    
+          <label for="nombre_dispositivo"/>
+          <field name="nombre_dispositivo"/>         
+          <label for="numero"/>
+          <field name="numero"/>
+          <label for="mascara"/>
+          <field name="mascara"/>
+          <label for="id_red"/>
+          <field name="id_red"/>
+          <label for="id_nodo"/>
+          <field name="id_nodo"/>
+        </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids" widget="mail_followers"/>
+          <field name="message_ids" widget="mail_thread"/>
+        </div>
+       </form>
+      </field>
+    </record> 
+
+
+     <record id="action_infrasan_ubicacionesvirtuales" model="ir.actions.act_window">
+      <field name="name">Ubicaciones virtuales</field>
+      <field name="res_model">infrasan.ubicacionesvirtuales</field>
+      <field name="target">current</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+     </record>       
+     <record id="busqueda_infrasan_ubicacionesvirtuales" model="ir.ui.view">
+      <field name="name">Busqueda ubicacionesvirtuales</field>
+      <field name="model">infrasan.ubicacionesvirtuales</field>      
+      <field name="type">search</field>
+      <field name="arch" type="xml">
+       <search>                
+        <field name="tipo"/>
+        <field name="path"/>        
+       </search>
+      </field>
+     </record>
+     <record id="lista_infrasan_ubicacionesvirtuales" model="ir.ui.view">
+      <field name="name">Listado de path</field>
+      <field name="model">infrasan.ubicacionesvirtuales</field>
+      <field name="arch" type="xml">
+       <tree string="path"> 
+        <field name="tipo"/>               
+        <field name="path"/>
+        <field name="id_nodo"/>
+        <field name="id_servicio"/>
+       </tree>
+      </field>
+     </record>
+     <record id="formulario_infrasan_ubicacionesvirtuales" model="ir.ui.view">
+      <field name="name">Formulario ubicacionesvirtuales</field>
+      <field name="model">infrasan.ubicacionesvirtuales</field>
+      <field name="arch" type="xml">
+       <form>
+        <sheet>                    
+          <label for="tipo"/>
+          <field name="tipo"/>
+          <label for="path"/>
+          <field name="path"/>         
+          <label for="id_nodo"/>
+          <field name="id_nodo"/>
+          <label for="id_servicio"/>
+          <field name="id_servicio"/>
+        </sheet>        
+       </form>
+      </field>
+    </record>
+
+
+    <menuitem sequence="0" 
+               id="menu_infrasan" 
+               name="Infrasan"/>
+    <menuitem sequence="1" 
+               id="menu_contenido_nodos" 
+               parent="menu_infrasan"
+               name="Infraestructura"/>
+    <menuitem  sequence="2" 
+               id="menu_contenido_infrasan_areas"
+               parent="menu_contenido_nodos"
+               action="action_infrasan_areas"/>
+    <menuitem  sequence="3" 
+               id="menu_contenido_infrasan_nodos"
+               parent="menu_contenido_nodos"
+               action="action_infrasan_nodos"/>
+    <menuitem  sequence="4" 
+               id="menu_contenido_infrasan_servicios"
+               parent="menu_contenido_nodos"
+               action="action_infrasan_servicios"/>
+    <menuitem  sequence="5"
+               id="menu_contenido_infrasan" 
+               parent="menu_infrasan"
+               name="Cuentas"/>
+    <menuitem  sequence="6" 
+               id="menu_contenido_infrasan_funcionarios"
+               parent="menu_contenido_infrasan"
+               action="action_partner_funcionarios"/>
+    <menuitem  sequence="7" 
+               id="menu_contenido_infrasan_usuarios"
+               parent="menu_contenido_infrasan"
+               action="action_infrasan_usuarios"/>         
+    <menuitem  sequence="8" 
+               id="menu_contenido_redes" 
+               parent="menu_infrasan"
+               name="Redes,IPs y servicios"/>
+    <menuitem  sequence="9" 
+               id="menu_contenido_infrasan_redes"
+               parent="menu_contenido_redes"
+               action="action_infrasan_redes"/>       
+    <menuitem  sequence="10" 
+               id="menu_contenido_infrasan_ips"
+               parent="menu_contenido_redes"
+               action="action_infrasan_ips"/>
+    <menuitem  sequence="11" 
+               id="menu_contenido_infrasan_ubicaciones_virtuales"
+               parent="menu_contenido_redes"
+               action="action_infrasan_ubicacionesvirtuales"/>
+    
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="infrasan.list">
+      <field name="name">infrasan list</field>
+      <field name="model">infrasan.infrasan</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="infrasan.action_window">
+      <field name="name">infrasan window</field>
+      <field name="res_model">infrasan.infrasan</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="infrasan.action_server">
+      <field name="name">infrasan server</field>
+      <field name="model_id" ref="model_infrasan_infrasan"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="infrasan" id="infrasan.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="infrasan.menu_1" parent="infrasan.menu_root"/>
+    <menuitem name="Menu 2" id="infrasan.menu_2" parent="infrasan.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="infrasan.menu_1_list" parent="infrasan.menu_1"
+              action="infrasan.action_window"/>
+    <menuitem name="Server to list" id="infrasan" parent="infrasan.menu_2"
+              action="infrasan.action_server"/>
+    -->
+  </data>
+</openerp>
