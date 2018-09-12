@@ -13,7 +13,7 @@
         Este modulo modifica la integración POS WEB y CRM deacuerdo a reglas de negocio particulares.
     """,
 
-    'author': "SCL-FOTOCOPIADORAS",
+    'author': "SCL-FOTOCOPIADORAS/SOFTWEB365",
     'website': "http://www.softweb365.com",
 
     # Categories can be used to filter modules in modules listing
