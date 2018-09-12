@@ -7,6 +7,7 @@
         subtitle on modules listing or apps.openerp.com""",
 
     'description': """
+        This module modifies POS WEB integration and CRM inventory magnament for infrastructure.
         Este modulo modifica la integracion POS WEB y CRM con gestion de inventario para infraestructura.
     """,
 
