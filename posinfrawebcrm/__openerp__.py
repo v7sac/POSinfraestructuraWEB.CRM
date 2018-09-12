@@ -7,7 +7,7 @@
         subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        Long description of module's purpose
+        Este modulo modifica la integracion POS WEB y CRM con gestion de inventario para infraestructura.
     """,
 
     'author': "SCL-SOFTWEB365",
