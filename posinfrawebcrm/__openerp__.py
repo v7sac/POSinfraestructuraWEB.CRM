@@ -3,12 +3,14 @@
     'name': "POSinfraestructuraWEB.CRM",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Integración infraestructura particular de reglas de negocio , 
+        para POS WEB y CRM compatible con la version 9.0 del ERP. 
+        requiere de los módulos 'base y correos'
+     """,
 
     'description': """
-        This module modifies POS WEB integration and CRM inventory magnament for infrastructure.
-        Este modulo modifica la integracion POS WEB y CRM con gestion de inventario para infraestructura.
+        This module modifies POS WEB integration and CRM to satisfy especifics rules of bussiness.
+        Este modulo modifica la integración POS WEB y CRM deacuerdo a reglas de negocio particulares.
     """,
 
     'author': "SCL-SOFTWEB365",
